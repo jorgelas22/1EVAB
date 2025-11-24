@@ -31,44 +31,64 @@ public class main {
 
             switch (opcion) {
                 case "1":
-                    for (cumpleAgenda c : repo.GetLista()) {
-                        System.out.println(c.GetNombre());
-                    }
+                    extraido1(repo);
                     break;
 
                 case "2":
-                    System.out.print("Día: ");
-                    int dia = Integer.parseInt(sc.nextLine());
-                    for (cumpleAgenda c : repo.BuscarPorDia(dia)) {
-                        System.out.println(c.GetNombre());
-                    }
+                    extraido2(sc, repo);
                     break;
 
                 case "3":
-                    System.out.print("Nombre: ");
-                    cumpleAgenda c = repo.BuscarPorNombre(sc.nextLine());
-                    if (c != null) System.out.println(c.GetNombre());
+                    extraido3(repo, sc);
                     break;
 
                 case "4":
-                    System.out.print("Nombre: ");
-                    String nombre = sc.nextLine();
-                    System.out.print("Día: ");
-                    int d = Integer.parseInt(sc.nextLine());
-                    System.out.print("Mes: ");
-                    int m = Integer.parseInt(sc.nextLine());
-                    repo.AddCumple(new cumpleAgenda(nombre, d, m));
+                    extraido4(sc, repo);
                     break;
 
                 case "5":
-                    System.out.print("Eliminar nombre: ");
-                    repo.EliminarPorNombre(sc.nextLine());
+                    extraido5(repo, sc);
                     break;
 
                 case "6":
                     salir = true;
                     break;
             }
+        }
+    }
+
+    private static void extraido5(cumpleRepo repo, Scanner sc) {
+        System.out.print("Eliminar nombre: ");
+        repo.EliminarPorNombre(sc.nextLine());
+    }
+
+    private static void extraido4(Scanner sc, cumpleRepo repo) {
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        System.out.print("Día: ");
+        int d = Integer.parseInt(sc.nextLine());
+        System.out.print("Mes: ");
+        int m = Integer.parseInt(sc.nextLine());
+        repo.AddCumple(new cumpleAgenda(nombre, d, m));
+    }
+
+    private static void extraido3(cumpleRepo repo, Scanner sc) {
+        System.out.print("Nombre: ");
+        cumpleAgenda c = repo.BuscarPorNombre(sc.nextLine());
+        if (c != null) System.out.println(c.GetNombre());
+    }
+
+    private static void extraido2(Scanner sc, cumpleRepo repo) {
+        System.out.print("Día: ");
+        int dia = Integer.parseInt(sc.nextLine());
+        for (cumpleAgenda c : repo.BuscarPorDia(dia)) {
+            System.out.println(c.GetNombre());
+        }
+    }
+
+    private static void extraido1(cumpleRepo repo) {
+        for (cumpleAgenda c : repo.GetLista()) {
+            System.out.println(c.GetNombre());
         }
     }
 }
