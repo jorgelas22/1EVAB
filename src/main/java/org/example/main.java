@@ -3,7 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class main {
-
+//Esto es el menu de la agenda//
     public static final String AGENDA = "\n=== AGENDA ===";
     public static final String LISTAR = "1. Listar";
     public static final String BUSCAR_POR_DÍA = "2. Buscar por día";
